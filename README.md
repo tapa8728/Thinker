@@ -1,5 +1,5 @@
 # Thinker
-"Thinker" is a web service that brings you closer to the subject of your choice, study-buddy or one-on-one tutoring sessions.
+**"Thinker"** is a web service that brings you closer to the subject of your choice, study-buddy or one-on-one tutoring sessions by gracefully constructing a *comprehesive guidance list* based on your *likes/dislikes* of course/study-buddy profiles. 
 
 # Team Name
 Buzy Beez
@@ -13,20 +13,20 @@ Buzy Beez
 Drawing inspiration from the popular dating application-"Tinder" we present-**Thinker** to help you choose your favouite subject or study-buddy by endlessly *liking* or *disliking* a course/study-buddy and eventually poring over a compehensive list of **online tutorials**, **books**, **study-partner profiles** and **tutors near your area**.
 
 # Technology
-### Front-end
+#### Front-end
 - ReactJS
 - CSS
 - BootStrap
 - Photoshop
 
-### Back-end
+#### Back-end
 - NodeJS
 - ExpressJS
 
-### Database
+#### Database
 - MongoDB
 
-### Hosting
+#### Hosting
 - Heroku
 
 # Learning
