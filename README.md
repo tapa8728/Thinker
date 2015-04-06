@@ -30,8 +30,9 @@ Drawing inspiration from the popular dating application-"Tinder" we present-**Th
 - Heroku
 
 # Learning
-This project seems to have a mix of all the following- 
-**Session management, database management, pattern recognition, ReactJS, Heroku deployment, UI Design and team management**
+This project seems to have a mix of all the following learning components- 
+**Session management, database management, pattern recognition, ReactJS, Heroku deployment, UI Design and team management**.
+Our porject leans towards a stronger learning curve of - ReactJS, UI and front-end design and functionality implementation.
 
 # Responsibilities
 Since we are starting off at the same level, we all will be pair-programming and brainstorming over a particular technology or concept. The broad-level classification of tasks will be-
