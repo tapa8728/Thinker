@@ -45,3 +45,6 @@ Since we are starting off at the same level, we all will be pair-programming and
 2. Set up MongoDB with *youtube tutorials/tutor profiles* and set up *routes*.
 3. Ponder and construct the algorrithm that will generate a *comprehensive guidance report* 
 4. Extensive and rigorous *unit, white-box, black-box, user and system testing*. Deployment to *Heroku*.
+
+# Q/A
+1. 
