@@ -46,7 +46,7 @@ Since we are starting off at the same level, we all will be pair-programming and
 3. Ponder and construct the algorrithm that will generate a *comprehensive guidance report* 
 4. Extensive and rigorous *unit, white-box, black-box, user and system testing*. Deployment to *Heroku*.
 
-# Q/A (Round -1)
+# Q/A (Round-1)
 1. WHat are the least amount of features is your product going to contain?
 2. What is your business pitch? What are going to offer?
 3. Are you going to have user accounts? 
@@ -58,4 +58,12 @@ Since we are starting off at the same level, we all will be pair-programming and
 2. UI should be slick
 3. User accounts should be there. 
 
+# Q/A (Round-2) 
+1. Will you be having user-user connections?
+2. Can we choose specific topics or courses only?
+3. Can someone be benefited with money? Is there going to be a commercial angle?
 
+# Features (Round-2)
+1. Have cards fo specific topics instead of full-fledged course names.
+2. Have a diverse user-base to match study-buddies
+3. provide more specific criteria for choosing/rejecting a study-buddy
