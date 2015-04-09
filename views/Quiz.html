@@ -1,9 +1,9 @@
-<!doctype html>
+<!soctype html>
 <html>
 
   <head>
 
-    <title>Login</title>
+    <title>Study Preferences</title>
     <script src="http://fb.me/react-0.13.1.js"></script>
     <script src="http://fb.me/JSXTransformer-0.13.1.js"></script>
 
@@ -51,14 +51,13 @@
         border: 2px solid yellow;
       }
       input[type=button] {
-        width: 150px;
+        width: 200px;
         color: white;
         background: #37CCA2;
         border: none;
         text-align: center;
         padding: 0;
         margin-top: 30px;
-        transition: 0.15s linear;
       }
       input[type=button]:hover {
         -webkit-box-shadow: 0px 0px 30px 0px yellow;
@@ -69,10 +68,8 @@
     </style>
 
   </head>
-
   <body>
-
-    <div id="main"></div>
+    <div id="example"></div>
     <script type="text/jsx">
 
 
@@ -81,15 +78,18 @@
             return (
             
             <div id="helloworld">
-                  <h1>Welcome back!</h1> 
+                  <h1>How do you study best?</h1> 
                   <br />
                   <div id="user-input">
-                    <input type="text" placeholder="Email" />
+                    Question 1: 
                     <br />
-                    <input type="text" placeholder="Password" />
-                    <br /><br />
+                    Question 2:
+                    <br />
+                    Question 3:
+                    <br />
+                    Question 4:
                   </div>
-                  <input type="button" value="Log In" /> 
+                  <input type="button" value="Submit Answers" /> 
             </div>
           );
         }
@@ -97,14 +97,12 @@
 
       setInterval(function() {
       React.render(
-          <HelloWorld />,
-          document.getElementById('main')
+          <HelloWorld date={new Date()} />,
+          document.getElementById('example')
         );
       }, 500);
 
 
     </script>
-
   </body>
-
 </html>
