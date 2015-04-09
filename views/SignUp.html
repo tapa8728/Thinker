@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Hello React</title>
+    <title>Sign Up Study-Buddy</title>
     <script src="http://fb.me/react-0.13.1.js"></script>
     <script src="http://fb.me/JSXTransformer-0.13.1.js"></script>
   </head>
@@ -25,14 +25,34 @@
                   <br />
                   Last Name:  <input type="text" placeholder="Your password here" />
                   <br />
-                  Email:  <input type="text" placeholder="Your password here" />
+                  <h4> So we can contact you ...  </h4>
+                  Email:  <input type="text" placeholder="Your Email here" />
                   <br />
-                  Phone #:  <input type="text" placeholder="Your password here" />
+                  Phone #:  <input type="text" placeholder="Your digits here" />
                   <br />
+                  <h4> Courses/Topics you rock... </h4>
+                  Choose one:  
+                  <select>
+                    <option value="goodIntegralCalc">Intergral Calculus</option>
+                    <option value="DifferentialCalc">Differential Calculus</option>
+                    <option value="psych101">Psychology Basics</option>
+                    <option value="OS101">Operating Systems Basics</option>
+                    <option value="OS202">Operating Systems Advanced</option>
+                  </select>
                   <br />
+                  <h4> Courses/Topics you cant rock... </h4>
+                  Choose one: 
+                  <select>
+                    <option value="IntegralCalc">Intergral Calculus</option>
+                    <option value="DifferentialCalc">Differential Calculus</option>
+                    <option value="psych101">Psychology Basics</option>
+                    <option value="OS101">Operating Systems Basics</option>
+                    <option value="OS202">Operating Systems Advanced</option>
+                  </select>
+                  <br /> <br />
                   <button type="button" onClick="signUpFunc()">Sign Up!</button>
                   <br /> <br /> <br />
-                  Aleady Have an Account?! <a href={'/home/user/Desktop/Thinker-git/Thinker/Login.html'}> Sign in</a>
+                  Aleady Have an Account?! <a href={'/Thinker/views/Login.html'}> Sign in</a>
         
                   </div></center>
         </div>
