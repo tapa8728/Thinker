@@ -6,12 +6,61 @@
     <script src="http://fb.me/JSXTransformer-0.13.1.js"></script>
 
     <style>
+      @import url('http://fonts.googleapis.com/css?family=Roboto+Slab');
       body {
         background: #C4F2E5;
       }
+      #helloworld {
+        font-family: Roboto Slab, helvetica, sans-serif;
+        text-align: center;
+      }
       h1 {
-        font-family: helvetica, sans-serif;
 
+      }
+      #user-input {
+        background: rgba(0, 0, 0, 0.2);
+        width: 450px;
+        height: 180px;
+        border-radius: 20px;
+        display: block;
+        position: relative;
+        margin: 0 auto;
+        text-align: center;
+        padding: 20px;
+/*        -webkit-box-shadow: 0px 0px 20px 0px rgba(0,115,130,0.75);
+        -moz-box-shadow: 0px 0px 20px 0px rgba(0,115,130,0.75);
+        box-shadow: 0px 0px 20px 0px rgba(0,115,130,0.75);*/
+      }
+      input {
+        width: 300px;
+        height: 50px;
+        padding-left: 20px;
+        font-family: Roboto Slab, helvetica, sans-serif;
+        font-size: 20px;
+        color: #37CCA2;
+        margin-bottom: 20px;
+        margin-top: 15px;
+      }
+      ::-webkit-input-placeholder { color: #CCCCCC; }
+      :-moz-placeholder { color: #CCCCCC; }
+      ::-moz-placeholder { color: #CCCCCC; }
+      :-ms-input-placeholder { color: #CCCCCC; }
+      input:focus {
+        border: 2px solid yellow;
+      }
+      input[type=button] {
+        width: 150px;
+        color: white;
+        background: #37CCA2;
+        border: none;
+        text-align: center;
+        padding: 0;
+        margin-top: 30px;
+      }
+      input[type=button]:hover {
+        -webkit-box-shadow: 0px 0px 30px 0px yellow;
+        -moz-box-shadow: 0px 0px 30px 0px yellow;
+        box-shadow: 0px 0px 30px 0px yellow;
       }
 
     </style>
@@ -21,53 +70,21 @@
     <div id="example"></div>
     <script type="text/jsx">
 
-        // var converter = new Showdown.converter();
-        // var stuff = converter.makeHtml('#Cmon markdown!');
-        // document.getElementById('example').innerHTML=stuff
-
-      // var converter = new Showdown.converter();
-      
-      // var MarkdownEditor = React.createClass({
-      //   getInitialState: function() {
-      //     return {value: 'Type some *markdown* here!'};
-      //   },
-      //   handleChange: function() {
-      //     this.setState({value: React.findDOMNode(this.refs.textarea).value});
-      //   },
-      //   render: function() {
-      //     return (
-      //       <div className="MarkdownEditor">
-      //         <h3>Input</h3>
-      //         <textarea
-      //           onChange={this.handleChange}
-      //           ref="textarea"
-      //           defaultValue={this.state.value} />
-      //         <h3>Output</h3>
-      //         <div
-      //           className="content"
-      //           dangerouslySetInnerHTML={{
-      //             __html: converter.makeHtml(this.state.value)
-      //           }}
-      //         />
-      //       </div>
-      //     );
-      //   }
-      // });
-
 
       var HelloWorld = React.createClass({
             render: function() {
             return (
             
-            <div>
-                  <h1>Welcome back</h1> 
+            <div id="helloworld">
+                  <h1>Welcome back!</h1> 
                   <br />
-                  UserName:  <input type="text" placeholder="Your Username here" />
-                  <br />
-                  password:  <input type="text" placeholder="Your password here" />
-                  <br /><br />
-                  It is {this.props.date.toTimeString()}
-              
+                  <div id="user-input">
+                    <input type="text" placeholder="Username" />
+                    <br />
+                    <input type="text" placeholder="Password" />
+                    <br /><br />
+                  </div>
+                  <input type="button" value="Log In" /> 
             </div>
           );
         }
@@ -80,7 +97,6 @@
         );
       }, 500);
 
-      // React.render(<MarkdownEditor />, mountNode);
 
     </script>
   </body>
