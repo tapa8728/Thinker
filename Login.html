@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Hello React</title>
+    <script src="http://fb.me/react-0.13.1.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.1.js"></script>
+  </head>
+  <body>
+    <div id="example"></div>
+    <script type="text/jsx">
+
+      // ** Your ReactJScode goes here! **
+      var HelloWorld = React.createClass({
+        render: function() {
+        return (
+        
+        <div>
+               <h1><center> Welcome to Login Page</center></h1> 
+              <br />
+              UserName:  <input type="text" placeholder="Your name here" />!
+              <br />
+              password:  <input type="text" placeholder="Your password here" />!
+              <br />
+              It is {this.props.date.toTimeString()}
+          
+        </div>
+      );
+    }
+  });
+
+      setInterval(function() {
+  React.render(
+    <HelloWorld date={new Date()} />,
+    document.getElementById('example')
+  );
+}, 500);
+    </script>
+  </body>
+</html>
