@@ -31,7 +31,7 @@ module.exports = function(app, passport) {
 	
 
 	app.post('/signup', passport.authenticate('local-signup', {
-		successRedirect : '/profile',
+		successRedirect : handle(),
 		failureRedirect : '/signup',
 		failureFlash: true //allow flash messages
 		}));
@@ -43,7 +43,32 @@ module.exports = function(app, passport) {
 		failureFlash : true
 		}));
 
-};
+
+
+var User = require('../app/models/user');
+
+// Create endpoint /api/beers for POSTS
+function handle(){
+app.post('/signup', function(req, res) {
+
+	var newUser= new User;
+
+  // Set the beer properties that came from the POST data
+  newUser.email = req.body.name;
+  newUser.password = req.body.password;
+  newUser.good_subject = req.body.good_subject;
+  newUser.bad_subject = req.body.bad_subject
+
+  // Save the beer and check for errors
+  newUser.save(function(err) {
+    if (err)
+      res.send(err);
+
+    res.json({ message: 'New user was  added to the locker!', data: newUser });
+  });
+});
+
+}};
 
 	// route middleware to make sure a user is logged in
 	function isLoggedIn(req,res, next) {
