@@ -63,8 +63,8 @@ app.post('/signup', function(req, res) {
   newUser.save(function(err) {
     if (err)
       res.send(err);
-
-    res.json({ message: 'New user was  added to the locker!', data: newUser });
+    res.render('quiz.ejs');
+ //   res.json({ message: 'New user was  added to the locker!', data: newUser });
   });
 });
 
