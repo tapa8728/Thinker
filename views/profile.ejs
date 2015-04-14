@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 <head>
+<<<<<<< HEAD
 	<title>Thinker</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
@@ -36,5 +37,68 @@
     </div>
 
 </div>
+=======
+	<title> Sign Up Study-Buddy< </title>
+	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <style>
+		body { padding-top:80px;}
+	</style>
+</head>
+<body>
+<div class="container">
+
+<div class="col-sm-6 col-sm-offset-3">
+
+	<h1><span class="fa fa-sign-in"></span> Signup</h1>
+
+	<% if (message.length > 0) { %>
+		<div class="alert alert-danger"> <%=message %></div>
+	<%} %>
+
+	<form action="/signup" method="post">
+		<div class="form-group"
+			<label>Email</label>
+			<input type="text" class="form-control" name="email">
+		</div>
+	<div class="form-group">
+		<label>Password</label>
+		<input type="password" class="form-control" name="password">
+	</div>
+	<div class="form-group">
+	   <h4> Courses/Topics you rock... </h4>
+                  Choose one:
+                  <select>
+                    <option value="goodIntegralCalc">Intergral Calculus</option>
+                    <option value="DifferentialCalc">Differential Calculus</option>
+                    <option value="psych101">Psychology Basics</option>
+                    <option value="OS101">Operating Systems Basics</option>
+                    <option value="OS202">Operating Systems Advanced</option>
+                  </select>
+	</div>
+	<div class="form-group">
+		 <h4> Courses/Topics you cant rock... </h4>
+               Choose one:
+		<select>
+                    <option value="IntegralCalc">Intergral Calculus</option>
+                    <option value="DifferentialCalc">Differential Calculus</option>
+                    <option value="psych101">Psychology Basics</option>
+                    <option value="OS101">Operating Systems Basics</option>
+                    <option value="OS202">Operating Systems Advanced</option>
+                  </select>
+	</div>
+
+	<button type="submit" class="btn btn-warning btn-lg">Signup</button>
+	</form>
+	
+	<hr>
+
+	<p>Already have an account? <a href="/login"> Login</a></p>
+	<p>Or go <a href="/"> home</a>.</p>
+
+</div>
+	
+</div>
+>>>>>>> 26df27cd63cb35fdce4017da19349169b4f88f43
 </body>
 </html>
