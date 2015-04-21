@@ -1,63 +1,230 @@
 <!doctype html>
 <html>
 <head>
-	<title> Sign Up Study-Buddy< </title>
+	<title>Study Preferences</title>
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <script src="http://fb.me/react-0.13.1.js"></script>
+    <script src="http://fb.me/JSXTransformer-0.13.1.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <style>
-		body { padding-top:80px;}
+		body {
+			padding: 0px;
+			margin: 0;
+			background: #C9D7F0;
+		}
+		h1 {
+			text-align: center;
+			display: block;
+			width: 600px;
+			margin: 0 auto;
+			margin-top: 20px;
+		}
+		#card-contain {
+			width: 500px;
+			height: 300px;
+			/*background: khaki;*/
+			margin: 0 auto;
+			margin-top: 35px;
+			z-index: -10;
+		}
+		.card {
+			  width: 340px;
+			  height: 260px;
+			  border: 2px solid #89A5D6;
+			  background: #fff;
+			  border-radius: 7px;
+			  margin-left: 80px;
+			  margin-top: 15px;
+			  padding-right: 40px;
+			  padding-left: 40px;
+			  position: absolute;
+		}
+		#card2 { z-index: -1; margin-left: 60px; }
+		#card3 { z-index: -2; margin-left: 40px; }
+		#card4 { z-index: -3; margin-left: 20px; }
+		#card5 { z-index: -4; margin-left: 0px; }
+		.card-text {
+			position: relative;
+			top: 50%;
+			transform: translateY(-50%);
+			text-align: center;
+			font-size: 22px;
+		}
+		#answer-contain {
+			width: 800px;
+			margin: 0 auto;
+			margin-top: 35px;
+		}
+		.answer {
+			width: 49%;
+			display: inline-block;
+		}
+		.answer-text {
+			display: inline-block;
+			text-align: center;
+			margin-right: 2%;
+			margin-left: 2%;
+			font-size: 18px;
+		}
+		.btn {
+			border: 1px solid #89A5D6;
+			width: 60px;
+			height: 60px;
+			border-radius: 30px;
+			margin-left: 40%;
+			margin-top: 15px;
+			text-align: center;
+			background: #fff;
+		}
+
 	</style>
 </head>
 <body>
-<div class="container">
 
-<div class="col-sm-6 col-sm-offset-3">
+<div>
 
-	<h1><span class="fa fa-sign-in"></span> Quiz</h1>
+<div>
 
+	<h1>Tell us how you prefer to study.</h1>
 
-	<form action="/signup" method="post">
-		<div class="form-group"
-			<label>Email</label>
-			<input type="text" class="form-control" name="email">
+	<div id="fill"></div>
+
+	<div id="answer-contain">
+		<div class="answer">
+			<div id="answer1" class="answer-text">
+			It's important for people to be on time and stay for the full study period.<br>
+			</div><div id="yesbtn1" class="btn"></div>
 		</div>
-	<div class="form-group">
-		<label>Password</label>
-		<input type="password" class="form-control" name="password">
-	</div>
-	<div class="form-group">
-	   <h4> Courses/Topics you rock... </h4>
-                  Choose one:
-                  <select>
-                    <option value="goodIntegralCalc">Intergral Calculus</option>
-                    <option value="DifferentialCalc">Differential Calculus</option>
-                    <option value="psych101">Psychology Basics</option>
-                    <option value="OS101">Operating Systems Basics</option>
-                    <option value="OS202">Operating Systems Advanced</option>
-                  </select>
-	</div>
-	<div class="form-group">
-		 <h4> Courses/Topics you cant rock... </h4>
-               Choose one:
-		<select>
-                    <option value="IntegralCalc">Intergral Calculus</option>
-                    <option value="DifferentialCalc">Differential Calculus</option>
-                    <option value="psych101">Psychology Basics</option>
-                    <option value="OS101">Operating Systems Basics</option>
-                    <option value="OS202">Operating Systems Advanced</option>
-                  </select>
+		<div class="answer">
+			<div id="answer2" class="answer-text">
+			I understand people are busy, they can come and go however works best for them.<br>
+			</div><div id="nobtn1" class="btn"></div>
+		</div>
 	</div>
 
-	<button type="submit" class="btn btn-warning btn-lg">Signup</button>
-	</form>
-	
-	<hr>
+	<script type="text/jsx">
 
-	<p>Already have an account? <a href="/login"> Login</a></p>
-	<p>Or go <a href="/"> home</a>.</p>
+      var HelloWorld = React.createClass({
+            render: function() {
+            return (
+            
+            <div id="card-contain">
+        		<div id="card1" className="card">
+					<div className="card-text">How rigid is your schedule when it comes to punctuality and time slots?</div>
+				</div>
+				<div id="card2" className="card">
+					<div className="card-text">You learn best when thinking about things:</div>
+				</div>
+				<div id="card3" className="card">
+					<div className="card-text">Do you like taking semi-frequent breaks when studying?</div>
+				</div>
+				<div id="card4" className="card">
+					<div className="card-text">At the end of the day, which of these two goals takes top priority?</div>
+				</div>
+				<div id="card5" className="card">
+					<div className="card-text">My most productive study environment is:</div>
+				</div>
+
+			</div>
+
+          );
+        }
+      });
+
+      setInterval(function() {
+      React.render(
+          <HelloWorld />,
+          document.getElementById('fill')
+        );
+      }, 500);
+
+
+    </script>
+
+    <script>
+
+    var x = 1;
+
+    $("#nobtn1").on("click", function() {
+
+    	if (x==1) {
+		    $("#card1").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+		    $("#card2").animate({ marginLeft: "+=20px"}, 400);
+		    $("#answer1").text("Theoretically, referring to the broad concepts and textbook often.");
+		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");    
+		}
+		if (x==2) {
+			$("#card2").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+			$("#card3").animate({ marginLeft: "+=40px"}, 400);
+		    $("#answer1").text("Nope, let's power through to the end and not waste too much time.");
+		    $("#answer2").text("Yes, otherwise we will all get burnt out and starve to death.");
+		}
+		if (x==3) {
+			$("#card3").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+			$("#card4").animate({ marginLeft: "+=60px"}, 400);
+		    $("#answer1").text("I want to understand the material well, even if it takes a while.");
+		    $("#answer2").text("I want to pass the class with a good grade, even if I don't understand it all.");
+		}
+		if (x==4) {
+			$("#card4").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+			$("#card5").animate({ marginLeft: "+=80px"}, 400);
+		    $("#answer1").text("Pretty quiet - I want to be able to focus without anything going on around me.");
+		    $("#answer2").text("Moderately social, like a coffee shop. Dead silence is a little much...");
+		}
+		if (x==5) {
+			$("#card5").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+		    $("#answer1").text("");
+		    $("#answer2").text("");
+		}
+
+	    x += 1;
+
+	});
+
+	$("#yesbtn1").on("click", function() {
+
+    	if (x==1) {
+		    $("#card1").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
+		    $("#card2").animate({ marginLeft: "+=20px"}, 400);
+		    $("#answer1").text("Theoretically, referring to the broad concepts and textbook often.");
+		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");    
+		}
+		if (x==2) {
+			$("#card2").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
+			$("#card3").animate({ marginLeft: "+=40px"}, 400);
+		    $("#answer1").text("Nope, let's power through to the end and not waste too much time.");
+		    $("#answer2").text("Yes, otherwise we will all get burnt out and starve to death.");
+		}
+		if (x==3) {
+			$("#card3").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
+			$("#card4").animate({ marginLeft: "+=60px"}, 400);
+		    $("#answer1").text("I want to understand the material well, even if it takes a while.");
+		    $("#answer2").text("I want to pass the class with a good grade, even if I don't understand it all.");
+		}
+		if (x==4) {
+			$("#card4").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
+			$("#card5").animate({ marginLeft: "+=80px"}, 400);
+		    $("#answer1").text("Pretty quiet - I want to be able to focus without anything going on around me.");
+		    $("#answer2").text("Moderately social, like a coffee shop. Dead silence is a little much...");
+		}
+		if (x==5) {
+			$("#card5").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
+		    $("#answer1").text("");
+		    $("#answer2").text("");
+		}
+
+	    x += 1;
+
+	});
+
+    </script>
 
 </div>
 	
 </div>
+
 </body>
 </html>
+
+<!-- on(), bind() -->
