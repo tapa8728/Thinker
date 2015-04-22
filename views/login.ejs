@@ -1,43 +1,115 @@
-<!-- views/login.ejs -->
 <!doctype html>
 <html>
 <head>
     <title>Thinker</title>
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
-    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- bootstrap -->
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- fontawesome -->
     <style>
-        body        { padding-top:80px; }
+        @import url('http://fonts.googleapis.com/css?family=Montserrat');
+        body {
+            padding-top:80px;
+            background: url("library2.jpg") no-repeat center center fixed;
+            background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            color: white;
+        }
+        h1 {
+            font-size: 40px;
+            font-family: Montserrat, sans-serif;
+            margin-bottom: 30px;
+        }
+        #contain {
+            background: rgba(255,255,255,0.2);
+            width: 800px;
+            height: 460px;
+            margin: 0 auto;
+            margin-top: 20px;
+            padding-top: 15px;
+            text-align: center;
+            border: 2px solid white;
+        }
+        .fa-sign-in {
+            padding-right: 10px;
+        }
+        input[type=text], input[type=password] {
+            width: 30%;
+            height: 50px;
+            margin: 0 auto;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        input[type=text]:focus, input[type=password]:focus {
+            border: 2px solid violet;
+        }
+        button {
+            margin-top: 20px;
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            border: 2px solid white;
+            color: white;
+            background: none;
+            font-size: 22px;
+            font-family: Montserrat, sans-serif;
+            transition: 0.12s linear;
+        }
+        button:hover {
+            background: white;
+            border: 0px;
+            color: indigo;
+        }
+        hr {
+            border: none;
+            background: white;
+            height: 2px;
+            width: 80%;
+            margin-top: 30px;
+        }
+        p {
+            font-family: Montserrat, sans-serif;
+            font-size: 18px;
+        }
+        a {
+            color: violet;
+        }
+        a:hover {
+            color: violet;
+            text-decoration: underline;
+        }
+
     </style>
 </head>
 <body>
-<div class="container">
 
-<div class="col-sm-6 col-sm-offset-3">
+<div id="contain">
 
-    <h1><span class="fa fa-sign-in"></span> Login</h1>
+    <h1><span class="fa fa-sign-in"></span>Login</h1>
 
     <!-- show any messages that come back with authentication -->
-    <% if (message.length > 0) { %>
-        <div class="alert alert-danger"><%= message %></div>
-    <% } %>
+        <% if (message.length > 0) { %>
+            <div class="alert alert-danger"><%= message %></div>
+        <% } %>
 
     <!-- LOGIN FORM -->
     <form action="/login" method="post">
         <div class="form-group">
-            <label>Email</label>
-            <input type="text" class="form-control" name="email">
+            <!-- <label>Email</label> -->
+            <input type="text" class="form-control" name="email" placeholder="Email">
         </div>
         <div class="form-group">
-            <label>Password</label>
-            <input type="password" class="form-control" name="password">
+            <!-- <label>Password</label> -->
+            <input type="password" class="form-control" name="password" placeholder="Password">
         </div>
 
-        <button type="submit" class="btn btn-warning btn-lg">Login</button>
+        <button type="submit">Submit</button>
     </form>
 
     <hr>
 
-    <p>Need an account? <a href="/signup">Signup</a></p>
+    <p>Need an account? <a href="/signup">Sign up.</a></p>
     <p>Or go <a href="/">home</a>.</p>
 
 </div>
