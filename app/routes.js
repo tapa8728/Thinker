@@ -1,5 +1,5 @@
 module.exports = function(app, passport) {
-	
+	var User = require('../app/models/user')    ;
 	//Home page
 	app.get('/', function(req,res) {
 		res.render('index.ejs'); //load the index.ejs file
@@ -36,6 +36,11 @@ module.exports = function(app, passport) {
 		failureFlash: true //allow flash messages
 		}));
 
+    app.post('/quiz', passport.authenticate('local-signup',{
+		successRedirect : handle_2(),
+		failureRedirect : '/signup',
+		failureFlash: true
+		}));
 
 	app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/profile',
@@ -43,17 +48,23 @@ module.exports = function(app, passport) {
 		failureFlash : true
 		}));
 
+    app.get('/data',function(req, res){
+		 User.find(function(err,users ) 		{
+    		if (err)
+      			res.send(err);
+
+    		res.json(users);
+  		});
+});
 
 
-var User = require('../app/models/user');
 
-// Create endpoint /api/beers for POSTS
+
 function handle(){
 app.post('/signup', function(req, res) {
 
-	var newUser= new User;
+	var newUser = new User;
 
-  // Set the beer properties that came from the POST data
   newUser.email = req.body.name;
   newUser.password = req.body.password;
   newUser.good_subject = req.body.good_subject;
@@ -67,9 +78,19 @@ app.post('/signup', function(req, res) {
  //   res.json({ message: 'New user was  added to the locker!', data: newUser });
   });
 });
+};
 
-}};
+function handle_2(){
+	app.post('/quiz/:id', function(req, res) {
+	 var user = User.findById(req.params.id, function(err, user) {
+    if (err)
+      res.send(err);
 
+    console.log(res.json(user));
+  });
+})}; 
+
+}
 
 	// route middleware to make sure a user is logged in
 	function isLoggedIn(req,res, next) {
@@ -80,6 +101,6 @@ app.post('/signup', function(req, res) {
 
 		// if they aren't, redirect them to the home page 
 		res.redirect('/');
-	}
+	};
 
 
