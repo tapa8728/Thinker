@@ -1,5 +1,8 @@
 var express = require('express');
 var app = express();
+var path = require('path');
+	app.use(express.static(__dirname + '/imgs'));
+
 var port = process.env.PORT || 8080;
 var mongoose = require('mongoose');
 var passport = require('passport');
