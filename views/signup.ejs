@@ -5,53 +5,140 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"> <!-- load bootstrap css -->
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css"> <!-- load fontawesome -->
     <style>
-		body { padding-top:80px;}
+		body {
+			padding-top: 30px;
+			background: url("library2.jpg") no-repeat center center fixed;
+            background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+            color: white;
+		}
+		h1 {
+            font-size: 40px;
+            font-family: Montserrat, sans-serif;
+            margin-bottom: 30px;
+            margin-top: 10px;
+        }
+        #contain {
+            background: rgba(255,255,255,0.2);
+            width: 800px;
+            height: 550px;
+            margin: 0 auto;
+            margin-top: 20px;
+            padding-top: 15px;
+            text-align: center;
+            border: 2px solid white;
+        }
+        .fa-chevron-right {
+            padding-right: 5px;
+        }
+        input[type=text], input[type=password] {
+            width: 45%;
+            height: 50px;
+            margin: 0 auto;
+            margin-top: 20px;
+            border-radius: 5px;
+            font-size: 20px;
+        }
+        input[type=text]:focus, input[type=password]:focus {
+            border: 2px solid violet;
+        }
+        #course-contain {
+        	width: 90%;
+        	margin: 0 auto;
+        	margin-top: 20px;
+        }
+        .courses {
+        	display: inline-block;
+        	width: 49%;
+        	font-family: Montserrat, sans-serif;
+        	font-size: 16px;
+        }
+        h4 {
+        	font-family: Montserrat, sans-serif;
+        	font-size: 18px;
+        }
+        button {
+            margin-top: 40px;
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            border: 2px solid white;
+            color: white;
+            background: none;
+            font-size: 22px;
+            font-family: Montserrat, sans-serif;
+            transition: 0.12s linear;
+        }
+        button:hover {
+            background: white;
+            border: 0px;
+            color: indigo;
+        }
+        hr {
+            border: none;
+            background: white;
+            height: 2px;
+            width: 80%;
+            margin-top: 30px;
+        }
+        p {
+            font-family: Montserrat, sans-serif;
+            font-size: 18px;
+        }
+        a {
+            color: violet;
+        }
+        a:hover {
+            color: violet;
+            text-decoration: underline;
+        }
+
 	</style>
 </head>
 <body>
-<div class="container">
 
-<div class="col-sm-6 col-sm-offset-3">
+<div id="contain">
 
-	<h1><span class="fa fa-sign-in"></span> Signup</h1>
+	<h1><span class="fa fa-chevron-right"></span> Signup</h1>
 
 	<% if (message.length > 0) { %>
 		<div class="alert alert-danger"> <%=message %></div>
 	<%} %>
 
 	<form action="/signup" method="post">
-		<div class="form-group"
-			<label>Email</label>
-			<input type="text" class="form-control" name="email">
-		</div>
 	<div class="form-group">
-		<label>Password</label>
-		<input type="password" class="form-control" name="password">
+		<input type="text" class="form-control" name="email" placeholder="Email">
 	</div>
 	<div class="form-group">
-	   <h4> Courses/Topics you rock... </h4>
-                  Choose one:
-                  <select name="good_subject">
-                    <option value="math">Math</option>
-                    <option value="natscience">Natural Science</option>
-                    <option value="lit">Literature</option>
-                    <option value="prog">Programming</option>
-                    <option value="language">Foreign Language</option>
-                  </select>
-	</div>
-	<div class="form-group">
-		 <h4> Courses/Topics you cant rock... </h4>
-               Choose one:
-				  <select name="bad_subject">
-                    <option value="math">Math</option>
-                    <option value="natscience">Natural Science</option>
-                    <option value="lit">Literature</option>
-                    <option value="prog">Programming</option>
-                    <option value="language">Foreign Language</option>
-                  </select>
+		<input type="password" class="form-control" name="password" placeholder="Password">
 	</div>
 
-	<button type="submit" class="btn btn-warning btn-lg">Signup</button>
+	<div id="course-contain">
+		<div class="courses">
+		   <h4>Which of these topics do you understand best?</h4>
+                <select name="good_subject">
+                	<option value="math">Math</option>
+                	<option value="natscience">Natural Science</option>
+                	<option value="lit">Literature</option>
+                	<option value="prog">Programming</option>
+                	<option value="language">Foreign Language</option>
+                </select>
+		</div>
+		<div class="courses">
+			 <h4>Which is toughest for you to understand?</h4>
+				<select name="bad_subject">
+                	<option value="math">Math</option>
+                	<option value="natscience">Natural Science</option>
+                	<option value="lit">Literature</option>
+                	<option value="prog">Programming</option>
+                	<option value="language">Foreign Language</option>
+                </select>
+		</div>
+	</div>
+
+	<button type="submit">Sign Up</button>
 	</form>
 	
 	<hr>
@@ -61,6 +148,5 @@
 
 </div>
 	
-</div>
 </body>
 </html>
