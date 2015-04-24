@@ -17,6 +17,18 @@
 		    -moz-background-size: cover;
 		    -webkit-background-size: cover;
 		}
+		#progress-contain {
+			background: rgba(255,255,255,0.2);
+			padding: 10px;
+			width: 220px;
+			height: 400px;
+			float: left;
+			margin-left: 15px;
+			color: white;
+			font-family: Montserrat, sans-serif;
+			font-size: 16px;
+			/*border: 2px solid white;*/
+		}
 		h1 {
 			text-align: center;
 			display: block;
@@ -24,6 +36,7 @@
 			margin: 0 auto;
 			margin-top: 20px;
 			color: white;
+			font-family: Montserrat, sans-serif;
 		}
 		#card-contain {
 			width: 500px;
@@ -33,27 +46,29 @@
 			z-index: -10;
 		}
 		.card {
-			  width: 340px;
-			  height: 260px;
-			  border: 2px solid #89A5D6;
-			  background: #fff;
-			  border-radius: 7px;
-			  margin-left: 80px;
-			  margin-top: 15px;
-			  padding-right: 40px;
-			  padding-left: 40px;
-			  position: absolute;
+			width: 340px;
+			height: 260px;
+			/*border: 2px solid violet;*/
+			background: #fff;
+			color: indigo;
+			border-radius: 30px;
+			margin-left: 80px;
+			margin-top: 15px;
+			padding-right: 40px;
+			padding-left: 40px;
+			position: absolute;
 		}
-		#card2 { z-index: -1; margin-left: 60px; }
-		#card3 { z-index: -2; margin-left: 40px; }
-		#card4 { z-index: -3; margin-left: 20px; }
-		#card5 { z-index: -4; margin-left: 0px; }
+		#card2 { z-index: -1; margin-left: 60px; opacity: 0.8; }
+		#card3 { z-index: -2; margin-left: 40px; opacity: 0.6; }
+		#card4 { z-index: -3; margin-left: 20px; opacity: 0.4; }
+		#card5 { z-index: -4; margin-left: 0px; opacity: 0.2; }
 		.card-text {
 			position: relative;
 			top: 50%;
 			transform: translateY(-50%);
 			text-align: center;
 			font-size: 22px;
+			font-family: Montserrat, sans-serif;
 		}
 		#answer-contain {
 			width: 800px;
@@ -71,6 +86,7 @@
 			margin-left: 2%;
 			font-size: 18px;
 			color: white;
+			font-family: Montserrat, sans-serif;
 		}
 		.btn {
 			width: 60px;
@@ -79,16 +95,20 @@
 			margin-left: 40%;
 			margin-top: 15px;
 			text-align: center;
+			border: 2px solid white;
+			transition: 0.12s linear;
+		}
+		.btn:hover {
 			background: white;
+			border: none;
 		}
 
 	</style>
 </head>
 <body>
 
-<div>
-
-<div>
+<div id="progress-contain">
+</div>
 
 	<h1>Tell us how you prefer to study.</h1>
 
@@ -150,72 +170,82 @@
 
     var x = 1;
 
-    $("#nobtn1").on("click", function() {
-
-    	if (x==1) {
-		    $("#card1").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-		    $("#card2").animate({ marginLeft: "+=20px"}, 400);
-		    $("#answer1").text("Theoretically, referring to the broad concepts and textbook often.");
-		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");    
-		}
-		if (x==2) {
-			$("#card2").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-			$("#card3").animate({ marginLeft: "+=40px"}, 400);
-		    $("#answer1").text("Nope, let's power through to the end and not waste too much time.");
-		    $("#answer2").text("Yes, otherwise we will all get burnt out and starve to death.");
-		}
-		if (x==3) {
-			$("#card3").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-			$("#card4").animate({ marginLeft: "+=60px"}, 400);
-		    $("#answer1").text("I want to understand the material well, even if it takes a while.");
-		    $("#answer2").text("I want to pass the class with a good grade, even if I don't understand it all.");
-		}
-		if (x==4) {
-			$("#card4").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-			$("#card5").animate({ marginLeft: "+=80px"}, 400);
-		    $("#answer1").text("Pretty quiet - I want to be able to focus without anything going on around me.");
-		    $("#answer2").text("Moderately social, like a coffee shop. Dead silence is a little much...");
-		}
-		if (x==5) {
-			$("#card5").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-		    $("#answer1").text("");
-		    $("#answer2").text("");
-		}
-
-	    x += 1;
-
-	});
-
 	$("#yesbtn1").on("click", function() {
 
     	if (x==1) {
 		    $("#card1").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 		    $("#card2").animate({ marginLeft: "+=20px"}, 400);
 		    $("#answer1").text("Theoretically, referring to the broad concepts and textbook often.");
-		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");    
+		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");
+		    $("#progress-contain").append("I like sticking to a fairly rigid schedule.<br><br>");    
 		}
 		if (x==2) {
 			$("#card2").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 			$("#card3").animate({ marginLeft: "+=40px"}, 400);
 		    $("#answer1").text("Nope, let's power through to the end and not waste too much time.");
 		    $("#answer2").text("Yes, otherwise we will all get burnt out and starve to death.");
+		    $("#progress-contain").append("Studying theoretically works best for me.<br><br>");
 		}
 		if (x==3) {
 			$("#card3").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 			$("#card4").animate({ marginLeft: "+=60px"}, 400);
 		    $("#answer1").text("I want to understand the material well, even if it takes a while.");
 		    $("#answer2").text("I want to pass the class with a good grade, even if I don't understand it all.");
+		    $("#progress-contain").append("I'm not one for frequent study breaks.<br><br>");
 		}
 		if (x==4) {
 			$("#card4").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 			$("#card5").animate({ marginLeft: "+=80px"}, 400);
 		    $("#answer1").text("Pretty quiet - I want to be able to focus without anything going on around me.");
 		    $("#answer2").text("Moderately social, like a coffee shop. Dead silence is a little much...");
+		    $("#progress-contain").append("Understanding the material well matters most.<br><br>");
 		}
 		if (x==5) {
 			$("#card5").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 		    $("#answer1").text("");
 		    $("#answer2").text("");
+		    $("#progress-contain").append("I need a quiet environment to study.<br><br>");
+		}
+
+	    x += 1;
+
+	});
+
+	$("#nobtn1").on("click", function() {
+
+    	if (x==1) {
+		    $("#card1").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+		    $("#card2").animate({ marginLeft: "+=20px"}, 400);
+		    $("#answer1").text("Theoretically, referring to the broad concepts and textbook often.");
+		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");
+		    $("#progress-contain").append("I can generally work around other peoples' schedules.<br><br>");    
+		}
+		if (x==2) {
+			$("#card2").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+			$("#card3").animate({ marginLeft: "+=40px"}, 400);
+		    $("#answer1").text("Nope, let's power through to the end and not waste too much time.");
+		    $("#answer2").text("Yes, otherwise we will all get burnt out and starve to death.");
+		    $("#progress-contain").append("Studying things practically works best for me.<br><br>");
+		}
+		if (x==3) {
+			$("#card3").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+			$("#card4").animate({ marginLeft: "+=60px"}, 400);
+		    $("#answer1").text("I want to understand the material well, even if it takes a while.");
+		    $("#answer2").text("I want to pass the class with a good grade, even if I don't understand it all.");
+		    $("#progress-contain").append("I'm a fan of taking breaks and not pushing ourselves too hard.<br><br>");
+		}
+		if (x==4) {
+			$("#card4").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+			$("#card5").animate({ marginLeft: "+=80px"}, 400);
+		    $("#answer1").text("Pretty quiet - I want to be able to focus without anything going on around me.");
+		    $("#answer2").text("Moderately social, like a coffee shop. Dead silence is a little much...");
+		    $("#progress-contain").append("A good final course grade matters most.<br><br>");
+		}
+		if (x==5) {
+			$("#card5").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
+		    $("#answer1").text("");
+		    $("#answer2").text("");
+		    $("#progress-contain").append("I enjoy studying in semi-social environments.<br><br>");
 		}
 
 	    x += 1;
@@ -223,10 +253,6 @@
 	});
 
     </script>
-
-</div>
-	
-</div>
 
 </body>
 </html>
