@@ -22,7 +22,7 @@ app.use(cookieParser()); //read cookies (needed for auth)
 app.use(bodyParser()); //get information from html forms 
 
 app.set('view engine', 'ejs');
-
+app.engine('js', require('ejs').renderFile);
 //required for passport 
 app.use(session({ secret: 'ilovescotchscotchyscotchscothch'}));
 app.use(passport.initialize());

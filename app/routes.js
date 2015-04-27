@@ -30,24 +30,55 @@ module.exports = function(app, passport) {
 		});
 	
 
-	app.post('/signup', passport.authenticate('local-signup', {
+	/*app.post('/signup', passport.authenticate('local-signup', {
 		successRedirect : handle(),
 		failureRedirect : '/signup',
 		failureFlash: true //allow flash messages
-		}));
+		}));*/
 
-    app.post('/quiz', passport.authenticate('local-signup',{
-		successRedirect : handle_2(),
+   /* app.post('/quiz', passport.authenticate('local-signup',{
+		successRedirect : handle(),
 		failureRedirect : '/signup',
 		failureFlash: true
-		}));
-
+		}));*/
+	
 	app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/profile',
 		failureRedirect : '/login',
 		failureFlash : true
 		}));
-
+ app.get('quiz/:id', function(req, res){
+        var id = req.params.id;
+        User.findOne({_id: id}, function(err,user){
+            if(req.accepts('json')){
+                if(err) {
+                    return res.json(500, {
+                        message: 'Error saving user',
+                        error: err
+                    });
+            }
+            if(!user) {
+                return res.json(404, {
+                    message: 'No such user'
+                });
+            }
+            user.quiz.key1 = req.body.answer1;
+            user.quiz.key2 = req.body.answer2;
+            user.quiz.key3 = req.body.answer3;
+            user.quiz.key4 = req.body.answer4;
+            user.quiz.key5 = req.body.answer5;
+            user.save(function(err, user){
+                if(err) {
+                    return res.send('500: Internal Server Error', 500);
+                }
+                if(!user) {
+                    return res.send('No such user');
+                }
+                return res.render('users/edit', {user: user, flash: 'Saved.'});
+     });
+    }
+  })
+})
     app.get('/data',function(req, res){
 		 User.find(function(err,users ) 		{
     		if (err)
@@ -58,15 +89,16 @@ module.exports = function(app, passport) {
 });
 
 
+/*app.get('/quiz',function(req, res) {
+	res.render('quiz.ejs', {user: ''});	
+})*/
 
-
-function handle(){
-app.post('/signup', function(req, res) {
-
+//function handle(){
+app.post('/quiz',  passport.authenticate('local-signup'),function(req, res) {
 	var newUser = new User;
 
-  newUser.email = req.body.name;
-  newUser.password = req.body.password;
+  newUser.local.email = req.body.email;
+  newUser.local.password = req.body.password;
   newUser.good_subject = req.body.good_subject;
   newUser.bad_subject = req.body.bad_subject
 
@@ -74,21 +106,22 @@ app.post('/signup', function(req, res) {
   newUser.save(function(err) {
     if (err)
       res.send(err);
-    res.render('quiz.ejs');
- //   res.json({ message: 'New user was  added to the locker!', data: newUser });
+    res.render('quiz.ejs', {user: newUser, flash: 'Created.'});
+ 	//res.json({ message: 'New user was  added to the locker!', data: newUser });
   });
 });
-};
+//};
 
 function handle_2(){
-	app.post('/quiz/:id', function(req, res) {
+//	app.post('/quiz/:id', function(req, res) {
 	 var user = User.findById(req.params.id, function(err, user) {
     if (err)
       res.send(err);
 
     console.log(res.json(user));
   });
-})}; 
+//})
+	}; 
 
 }
 
