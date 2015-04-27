@@ -48,7 +48,6 @@
 		.card {
 			width: 340px;
 			height: 260px;
-			/*border: 2px solid violet;*/
 			background: #fff;
 			color: indigo;
 			border-radius: 30px;
@@ -58,10 +57,10 @@
 			padding-left: 40px;
 			position: absolute;
 		}
-		#card2 { z-index: -1; margin-left: 60px; opacity: 0.8; }
-		#card3 { z-index: -2; margin-left: 40px; opacity: 0.6; }
-		#card4 { z-index: -3; margin-left: 20px; opacity: 0.4; }
-		#card5 { z-index: -4; margin-left: 0px; opacity: 0.2; }
+		#card2 { z-index: -1; margin-left: 60px; background: #E6E6E6; opacity: 0.9; }
+		#card3 { z-index: -2; margin-left: 40px; background: #D1D1D1; opacity: 0.8; }
+		#card4 { z-index: -3; margin-left: 20px; background: #C4C4C4; opacity: 0.7; }
+		#card5 { z-index: -4; margin-left: 0px; background: #B3B3B3; opacity: 0.6; }
 		.card-text {
 			position: relative;
 			top: 50%;
@@ -102,6 +101,30 @@
 			background: white;
 			border: none;
 		}
+		#done {
+			width: 350px;
+            height: 50px;
+            margin: 0 auto;
+            border-radius: 50px;
+            text-align: center;
+            padding-top: 6px;
+            border: 2px solid white;
+            color: white;
+            background: none;
+            font-size: 22px;
+            font-family: Montserrat, sans-serif;
+            transition: 0.12s linear;
+            display: none;
+		}
+		#done:hover {
+            background: white;
+            border: 0px;
+            color: indigo;
+            padding-top: 7px;
+        }
+        a:hover {
+        	text-decoration: none;
+        }
 
 	</style>
 </head>
@@ -113,6 +136,7 @@
 	<h1>Tell us how you prefer to study.</h1>
 
 	<div id="fill"></div>
+	<a href="/profile"><div id="done">See your new profile</div></a>
 
 	<div id="answer-contain">
 		<div class="answer">
@@ -122,7 +146,7 @@
 		</div>
 		<div class="answer">
 			<div id="answer2" class="answer-text">
-			I understand people are busy, they can come and go however works best for them.<br>
+			I know people are busy, they can come and go however works best for them.<br>
 			</div><div id="nobtn1" class="btn"></div>
 		</div>
 	</div>
@@ -174,28 +198,32 @@
 
     	if (x==1) {
 		    $("#card1").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
-		    $("#card2").animate({ marginLeft: "+=20px"}, 400);
+		    $("#card2").animate({ marginLeft: "+=20px", opacity: "1"}, 400);
+		    $("#card2").css("background", "white");
 		    $("#answer1").text("Theoretically, referring to the broad concepts and textbook often.");
 		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");
 		    $("#progress-contain").append("I like sticking to a fairly rigid schedule.<br><br>");    
 		}
 		if (x==2) {
 			$("#card2").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
-			$("#card3").animate({ marginLeft: "+=40px"}, 400);
+			$("#card3").animate({ marginLeft: "+=40px", opacity: "1"}, 400);
+			$("#card3").css("background", "white");
 		    $("#answer1").text("Nope, let's power through to the end and not waste too much time.");
 		    $("#answer2").text("Yes, otherwise we will all get burnt out and starve to death.");
 		    $("#progress-contain").append("Studying theoretically works best for me.<br><br>");
 		}
 		if (x==3) {
 			$("#card3").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
-			$("#card4").animate({ marginLeft: "+=60px"}, 400);
+			$("#card4").animate({ marginLeft: "+=60px", opacity: "1"}, 400);
+			$("#card4").css("background", "white");
 		    $("#answer1").text("I want to understand the material well, even if it takes a while.");
 		    $("#answer2").text("I want to pass the class with a good grade, even if I don't understand it all.");
 		    $("#progress-contain").append("I'm not one for frequent study breaks.<br><br>");
 		}
 		if (x==4) {
 			$("#card4").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
-			$("#card5").animate({ marginLeft: "+=80px"}, 400);
+			$("#card5").animate({ marginLeft: "+=80px", opacity: "1"}, 400);
+			$("#card5").css("background", "white");
 		    $("#answer1").text("Pretty quiet - I want to be able to focus without anything going on around me.");
 		    $("#answer2").text("Moderately social, like a coffee shop. Dead silence is a little much...");
 		    $("#progress-contain").append("Understanding the material well matters most.<br><br>");
@@ -204,6 +232,11 @@
 			$("#card5").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 		    $("#answer1").text("");
 		    $("#answer2").text("");
+		    $("#nobtn1").animate({ opacity: "0"}, 400);
+		    $("#yesbtn1").animate({ opacity: "0"}, 400);
+		    setTimeout( function(){
+		      $("#done").css("display", "block");
+		    },600);
 		    $("#progress-contain").append("I need a quiet environment to study.<br><br>");
 		}
 
@@ -215,28 +248,32 @@
 
     	if (x==1) {
 		    $("#card1").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-		    $("#card2").animate({ marginLeft: "+=20px"}, 400);
+		    $("#card2").animate({ marginLeft: "+=20px", opacity: "1"}, 400);
+		    $("#card2").css("background", "white");
 		    $("#answer1").text("Theoretically, referring to the broad concepts and textbook often.");
 		    $("#answer2").text("Practically, and it helps if I can see the real-world application at play.");
 		    $("#progress-contain").append("I can generally work around other peoples' schedules.<br><br>");    
 		}
 		if (x==2) {
 			$("#card2").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-			$("#card3").animate({ marginLeft: "+=40px"}, 400);
+			$("#card3").animate({ marginLeft: "+=40px", opacity: "1"}, 400);
+			$("#card3").css("background", "white");
 		    $("#answer1").text("Nope, let's power through to the end and not waste too much time.");
 		    $("#answer2").text("Yes, otherwise we will all get burnt out and starve to death.");
 		    $("#progress-contain").append("Studying things practically works best for me.<br><br>");
 		}
 		if (x==3) {
 			$("#card3").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-			$("#card4").animate({ marginLeft: "+=60px"}, 400);
+			$("#card4").animate({ marginLeft: "+=60px", opacity: "1"}, 400);
+			$("#card4").css("background", "white");
 		    $("#answer1").text("I want to understand the material well, even if it takes a while.");
 		    $("#answer2").text("I want to pass the class with a good grade, even if I don't understand it all.");
 		    $("#progress-contain").append("I'm a fan of taking breaks and not pushing ourselves too hard.<br><br>");
 		}
 		if (x==4) {
 			$("#card4").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
-			$("#card5").animate({ marginLeft: "+=80px"}, 400);
+			$("#card5").animate({ marginLeft: "+=80px", opacity: "1"}, 400);
+			$("#card5").css("background", "white");
 		    $("#answer1").text("Pretty quiet - I want to be able to focus without anything going on around me.");
 		    $("#answer2").text("Moderately social, like a coffee shop. Dead silence is a little much...");
 		    $("#progress-contain").append("A good final course grade matters most.<br><br>");
@@ -245,6 +282,11 @@
 			$("#card5").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
 		    $("#answer1").text("");
 		    $("#answer2").text("");
+		    $("#nobtn1").animate({ opacity: "0"}, 400);
+		    $("#yesbtn1").animate({ opacity: "0"}, 400);
+		    setTimeout( function(){
+		      $("#done").css("display", "block");
+		    },600);
 		    $("#progress-contain").append("I enjoy studying in semi-social environments.<br><br>");
 		}
 
