@@ -132,13 +132,10 @@
 
 <div id="progress-contain">
 </div>
-
 	<h1>Tell us how you prefer to study.</h1>
 
 	<div id="fill"></div>
-<form id="submit" action="/profile" method="post"> 
-	<button type="submit" id="done">See your new profile</button>
-</form>
+<a class="submit" id="done" href="/profile"  >See your new profile</a>
 
 	<div id="answer-contain">
 		<div class="answer">
@@ -191,8 +188,9 @@
 
 
     </script>
-	<script src="server.js" type="text/javascript"></script>
-    <script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js">  </script>
+ 
+   <script>
 
     var x = 1;
 	var quiz = [];
@@ -305,14 +303,23 @@
 
 	    x += 1;
 });
-$('form#submit').click( function() {
-    console.log(quiz)
-    });
+      $(document).ready(function(){
+$("#done").click(function(e){
+		e.preventDefault();
+          $.post("/profile",{quiz: quiz}, function(data){
+			console.log("data is " +data)
+            if(data==='done')
+              {
+                alert("login success");
+              }
+          });
+	return false;
+	});
+		});
 
 
     </script>
 
 </body>
 </html>
-
 <!-- on(), bind() -->

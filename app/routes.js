@@ -1,6 +1,7 @@
 module.exports = function(app, passport) {
 	var User = require('../app/models/user')    ;
      var newUser = new User;
+	var usr;
 	//Home page
 	app.get('/', function(req,res) {
 		res.render('index.ejs'); //load the index.ejs file
@@ -15,28 +16,50 @@ module.exports = function(app, passport) {
 	app.get('/signup', function(req,res) {
 		res.render('signup.ejs', {message: req.flash('sighupMessage')}); //render the page in any flash data if it exists
 	});
+	
+	app.get('/profile',isLoggedIn, function(req,res) {
+	var results = [ ];	
+	User.find({'good_subject': newUser.bad_subject},function(err,listusers ){
+        for (var usr in listusers){
+                //console.log(usr);
+                if(listusers[usr].bad_subject == newUser.good_subject)
+                    {
+                        console.log("Match!!!");
+                        console.log(listusers[usr]);
+						results.push(listusers[usr]);
+                    }
+        }
+		
+
+    });
+		console.log("results outside" + results);
+		res.render('profile.ejs',{user: newUser, match: results});
+	});
 		
 	//profile 
-	var results=[]
 	app.post('/profile', isLoggedIn, function(req, res) {
-	 User.find({'good_subject': newUser.bad_subject},function(err,listusers ){ 
-		for (var usr in listusers){
-				//console.log(usr);
-				if(listusers[usr].bad_subject == newUser.good_subject)
-					{
-						console.log("Match!!!");
-						console.log(listusers[usr]);
-						
-						results.push(listusers[usr]);	
-					}
-		}
+	//var user_name=JSON.parse(req.body.user);
+    var quiz=req.body.quiz;
+	console.log("I'm in profile post quiz--"+quiz)
+	console.log("I'm in profile post user--" + JSON.stringify(usr)); 
+	newUser = new User;
 
-	
+  newUser.local.email = usr['email'];
+  newUser.local.password = usr['password'];
+  newUser.good_subject = usr['good_subject'];
+  newUser.bad_subject = usr['bad_subject'];
+  newUser.quiz.key1 = quiz[0];
+  newUser.quiz.key2 = quiz[1];
+  newUser.quiz.key3 = quiz[2];
+  newUser.quiz.key4 = quiz[3];
+  newUser.quiz.key5 = quiz[4];
+
+ 
+  // Save the beer and check for errors
+  newUser.save(function(err) {
+    if (err)
+      res.send(err);
 	})
-	
-	res.render('profile.ejs', {
-		user: newUser,match: results 
-		});
 	});
 
 
@@ -112,7 +135,7 @@ module.exports = function(app, passport) {
 
 //function handle(){
 app.post('/quiz',  passport.authenticate('local-signup'),function(req, res) {
-	 newUser = new User;
+	/* newUser = new User;
 
   newUser.local.email = req.body.email;
   newUser.local.password = req.body.password;
@@ -122,11 +145,16 @@ app.post('/quiz',  passport.authenticate('local-signup'),function(req, res) {
   // Save the beer and check for errors
   newUser.save(function(err) {
     if (err)
-      res.send(err);
-    res.render('quiz.ejs', {user: newUser, flash: 'Created.'});
- 	//res.json({ message: 'New user was  added to the locker!', data: newUser });
+      res.send(err);*/
+	/*var usr=[];
+	usr.push(req.body.email);	
+	usr.push(req.body.password);
+	usr.push(req.body.good_subject);
+	usr.push(req.body.bad_subject);*/
+	
+	 usr= {email: req.body.email, password: req.body.password, good_subject: req.body.good_subject, bad_subject: req.body.bad_subject}
+    res.render('quiz.ejs', {flash: 'Created.'});
   });
-});
 //};
 
 function handle_2(){
