@@ -18,7 +18,7 @@ module.exports = function(app, passport) {
 	});
 	
 	app.get('/profile',isLoggedIn, function(req,res) {
-	var results = [ ];	
+	/*var results = [ ];	
 	User.find({'good_subject': newUser.bad_subject},function(err,listusers ){
         for (var usr in listusers){
                 //console.log(usr);
@@ -31,12 +31,13 @@ module.exports = function(app, passport) {
         }
 		
 
-    });
+    });*/
 		console.log("results outside" + results);
 		res.render('profile.ejs',{user: newUser, match: results});
 	});
 		
 	//profile 
+	var results = [];
 	app.post('/profile', isLoggedIn, function(req, res) {
 	//var user_name=JSON.parse(req.body.user);
     var quiz=req.body.quiz;
@@ -60,6 +61,21 @@ module.exports = function(app, passport) {
     if (err)
       res.send(err);
 	})
+
+    User.find({'good_subject': newUser.bad_subject},function(err,listusers ){
+        for (var usr in listusers){
+                //console.log(usr);
+                if(listusers[usr].bad_subject == newUser.good_subject)
+                    {
+                        console.log("Match!!!");
+                        console.log(listusers[usr]);
+                        results.push(listusers[usr]);
+                    }
+        }
+
+
+    });
+	
 	});
 
 

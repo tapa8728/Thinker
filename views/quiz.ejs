@@ -135,8 +135,9 @@
 	<h1>Tell us how you prefer to study.</h1>
 
 	<div id="fill"></div>
-<a class="submit" id="done" href="/profile"  >See your new profile</a>
-
+<form id="done" action="/profile">
+<button type="submit"> See your new profile </button>
+</form>
 	<div id="answer-contain">
 		<div class="answer">
 			<div id="answer1" class="answer-text">
@@ -305,7 +306,6 @@
 });
       $(document).ready(function(){
 $("#done").click(function(e){
-		e.preventDefault();
           $.post("/profile",{quiz: quiz}, function(data){
 			console.log("data is " +data)
             if(data==='done')
@@ -313,7 +313,6 @@ $("#done").click(function(e){
                 alert("login success");
               }
           });
-	return false;
 	});
 		});
 
