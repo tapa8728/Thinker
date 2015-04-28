@@ -1,6 +1,7 @@
 module.exports = function(app, passport) {
 	var User = require('../app/models/user')    ;
-     var newUser = new User;
+    var newUser = new User;
+	
 	//Home page
 	app.get('/', function(req,res) {
 		res.render('index.ejs'); //load the index.ejs file
@@ -18,25 +19,33 @@ module.exports = function(app, passport) {
 		
 	//profile 
 	var results=[]
-	app.post('/profile', isLoggedIn, function(req, res) {
-	 User.find({'good_subject': newUser.bad_subject},function(err,listusers ){ 
-		for (var usr in listusers){
-				//console.log(usr);
+	var rescount=0		//stores the coount of the number of users
+	var tutor
+	var listusers
+	app.post('/profile', isLoggedIn, function(req, res) 
+	{
+		 User.find({'good_subject': newUser.bad_subject},function(err,listusers )
+		 { 
+			for (var usr in listusers)
+			{	//perfect study-buddies. Need to add qui logic here
 				if(listusers[usr].bad_subject == newUser.good_subject)
-					{
-						console.log("Match!!!");
-						console.log(listusers[usr]);
-						
-						results.push(listusers[usr]);	
-					}
-		}
+				{
+					console.log("Match!!!");
+					console.log(listusers[usr]);
+					results.push(listusers[usr]);
+					rescount = rescount +1;	
+				}
+			}
+		//tutors will be in listusers fully.
 
-	
-	})
-	
-	res.render('profile.ejs', {
-		user: newUser,match: results 
+
 		});
+
+		console.log("TOTAL COUNT ... ");
+		console.log(rescount);
+		res.render('profile.ejs', {
+			user: newUser, match: results, count: rescount, tutors: listusers
+			});
 	});
 
 
@@ -64,6 +73,7 @@ module.exports = function(app, passport) {
 		failureRedirect : '/login',
 		failureFlash : true
 		}));
+
  app.get('quiz/:id', function(req, res){
         var id = req.params.id;
         User.findOne({_id: id}, function(err,user){
@@ -114,10 +124,13 @@ module.exports = function(app, passport) {
 app.post('/quiz',  passport.authenticate('local-signup'),function(req, res) {
 	 newUser = new User;
 
+  newUser.first_name = req.body.first_name;
+  newUser.last_name = req.body.last_name;
   newUser.local.email = req.body.email;
   newUser.local.password = req.body.password;
   newUser.good_subject = req.body.good_subject;
   newUser.bad_subject = req.body.bad_subject
+
 
   // Save the beer and check for errors
   newUser.save(function(err) {

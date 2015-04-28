@@ -22,14 +22,18 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-			<h1> <%= JSON.stringify(match) %> </h1>
+			<p> Study Buddy Matching Users are :  <%= JSON.stringify(match) %> </p>
+            <h1> Number of Study Buddy users : <%= JSON.stringify(count) %> </h1>
+            <p> TUTORS : <%= JSON.stringify(tutors) %> </p>
+
                 <h3><span class="fa fa-user"></span> Local</h3>
                     <p>
+                        <strong>First Name: </strong>: <%= user.first_name %><br>
+                        <strong>Last Name: </strong>: <%= user.last_name %><br>
                         <strong>id</strong>: <%= user._id %><br>
                         <strong>email</strong>: <%= user.local.email %><br>
                         <strong>Good subject</strong>: <%= user.good_subject%>
- 
-						 <strong>Bad subject</strong>:     <%= user.bad_subject%>
+                        <strong>Bad subject</strong>:     <%= user.bad_subject%>
                    </p>
 
             </div>
