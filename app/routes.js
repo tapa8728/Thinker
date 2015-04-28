@@ -17,20 +17,25 @@ module.exports = function(app, passport) {
 	});
 		
 	//profile 
+	var results=[]
 	app.post('/profile', isLoggedIn, function(req, res) {
 	 User.find({'good_subject': newUser.bad_subject},function(err,listusers ){ 
-			for (var usr in listusers){
+		for (var usr in listusers){
 				//console.log(usr);
 				if(listusers[usr].bad_subject == newUser.good_subject)
 					{
 						console.log("Match!!!");
 						console.log(listusers[usr]);
+						
+						results.push(listusers[usr]);	
 					}
-	}
+		}
+
+	
 	})
 	
 	res.render('profile.ejs', {
-			user: newUser// get the user out of session and pass to template 	
+		user: newUser,match: results 
 		});
 	});
 
