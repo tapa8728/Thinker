@@ -1,5 +1,6 @@
 module.exports = function(app, passport) {
 	var User = require('../app/models/user')    ;
+     var newUser = new User;
 	//Home page
 	app.get('/', function(req,res) {
 		res.render('index.ejs'); //load the index.ejs file
@@ -17,8 +18,19 @@ module.exports = function(app, passport) {
 		
 	//profile 
 	app.post('/profile', isLoggedIn, function(req, res) {
-		res.render('profile.ejs', {
-			user: req.user // get the user out of session and pass to template 	
+	 User.find({'good_subject': newUser.bad_subject},function(err,listusers ){ 
+			for (var usr in listusers){
+				//console.log(usr);
+				if(listusers[usr].bad_subject == newUser.good_subject)
+					{
+						console.log("Match!!!");
+						console.log(listusers[usr]);
+					}
+	}
+	})
+	
+	res.render('profile.ejs', {
+			user: newUser// get the user out of session and pass to template 	
 		});
 	});
 
@@ -95,7 +107,7 @@ module.exports = function(app, passport) {
 
 //function handle(){
 app.post('/quiz',  passport.authenticate('local-signup'),function(req, res) {
-	var newUser = new User;
+	 newUser = new User;
 
   newUser.local.email = req.body.email;
   newUser.local.password = req.body.password;

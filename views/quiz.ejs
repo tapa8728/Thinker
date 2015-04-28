@@ -136,7 +136,7 @@
 	<h1>Tell us how you prefer to study.</h1>
 
 	<div id="fill"></div>
-<form action="/profile" method="post"> 
+<form id="submit" action="/profile" method="post"> 
 	<button type="submit" id="done">See your new profile</button>
 </form>
 
@@ -191,14 +191,16 @@
 
 
     </script>
-
+	<script src="server.js" type="text/javascript"></script>
     <script>
 
     var x = 1;
+	var quiz = [];
 
 	$("#yesbtn1").on("click", function() {
-
+		
     	if (x==1) {
+			quiz.push("yes");
 		    $("#card1").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 		    $("#card2").animate({ marginLeft: "+=20px", opacity: "1"}, 400);
 		    $("#card2").css("background", "white");
@@ -207,6 +209,7 @@
 		    $("#progress-contain").append("I like sticking to a fairly rigid schedule.<br><br>");    
 		}
 		if (x==2) {
+		quiz.push("yes");
 			$("#card2").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 			$("#card3").animate({ marginLeft: "+=40px", opacity: "1"}, 400);
 			$("#card3").css("background", "white");
@@ -215,6 +218,7 @@
 		    $("#progress-contain").append("Studying theoretically works best for me.<br><br>");
 		}
 		if (x==3) {
+		quiz.push("yes");
 			$("#card3").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 			$("#card4").animate({ marginLeft: "+=60px", opacity: "1"}, 400);
 			$("#card4").css("background", "white");
@@ -223,6 +227,7 @@
 		    $("#progress-contain").append("I'm not one for frequent study breaks.<br><br>");
 		}
 		if (x==4) {
+		quiz.push("yes");
 			$("#card4").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 			$("#card5").animate({ marginLeft: "+=80px", opacity: "1"}, 400);
 			$("#card5").css("background", "white");
@@ -231,6 +236,7 @@
 		    $("#progress-contain").append("Understanding the material well matters most.<br><br>");
 		}
 		if (x==5) {
+		quiz.push("yes");
 			$("#card5").animate({ opacity: "0", marginLeft: "-=200px" }, 400);
 		    $("#answer1").text("");
 		    $("#answer2").text("");
@@ -249,6 +255,7 @@
 	$("#nobtn1").on("click", function() {
 
     	if (x==1) {
+		quiz.push("no");
 		    $("#card1").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
 		    $("#card2").animate({ marginLeft: "+=20px", opacity: "1"}, 400);
 		    $("#card2").css("background", "white");
@@ -257,6 +264,7 @@
 		    $("#progress-contain").append("I can generally work around other peoples' schedules.<br><br>");    
 		}
 		if (x==2) {
+		quiz.push("no")
 			$("#card2").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
 			$("#card3").animate({ marginLeft: "+=40px", opacity: "1"}, 400);
 			$("#card3").css("background", "white");
@@ -265,6 +273,7 @@
 		    $("#progress-contain").append("Studying things practically works best for me.<br><br>");
 		}
 		if (x==3) {
+		quiz.push("no");
 			$("#card3").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
 			$("#card4").animate({ marginLeft: "+=60px", opacity: "1"}, 400);
 			$("#card4").css("background", "white");
@@ -273,6 +282,7 @@
 		    $("#progress-contain").append("I'm a fan of taking breaks and not pushing ourselves too hard.<br><br>");
 		}
 		if (x==4) {
+		quiz.push("no");
 			$("#card4").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
 			$("#card5").animate({ marginLeft: "+=80px", opacity: "1"}, 400);
 			$("#card5").css("background", "white");
@@ -281,6 +291,7 @@
 		    $("#progress-contain").append("A good final course grade matters most.<br><br>");
 		}
 		if (x==5) {
+		quiz.push("no");
 			$("#card5").animate({ opacity: "0", marginLeft: "+=200px" }, 400);
 		    $("#answer1").text("");
 		    $("#answer2").text("");
@@ -293,8 +304,11 @@
 		}
 
 	    x += 1;
+});
+$('form#submit').click( function() {
+    console.log(quiz)
+    });
 
-	});
 
     </script>
 
