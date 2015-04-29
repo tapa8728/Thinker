@@ -13,7 +13,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var session = require('express-session');
 
-var configDB =require('./config/database.js');
+var configDB =process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL || require('./config/database.js');
 mongoose.connect(configDB.url);
  require('./config/passport')(passport); // pass passport for configuration
 
