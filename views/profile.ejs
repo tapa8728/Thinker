@@ -5,42 +5,150 @@
 	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <style>
-        body  { padding-top:80px; word-wrap:break-word; }
+        body  {
+            padding-top: 15px;
+            word-wrap: break-word;
+            margin: 0;
+            background: url("library2.jpg") no-repeat center center fixed;
+            background-size: cover;
+            -o-background-size: cover;
+            -moz-background-size: cover;
+            -webkit-background-size: cover;
+        }
+        h1 {
+            /*padding-left: 15px;*/
+            display: block;
+            /*width: 600px;*/
+            margin: 0 auto;
+            margin-top: 20px;
+            color: white;
+            font-family: Montserrat, sans-serif;
+            font-size: 35px;
+        }
+        #personal-contain {
+            /*background: lightblue;*/  
+            width: 25%;
+            margin-left: 3%;
+            height: auto;
+            display: inline-block;
+            color: white;
+            font-family: Montserrat, sans-serif;
+            font-size: 22px;
+        }
+        #personal-info {
+            display: block;
+            margin-top: 7px;
+            font-size: 25px;
+            font-family: Montserrat, sans-serif;
+            color: white;
+        }
+        .grn { color: #50EB53; } .red { color: red; }
+        #personal-info br {
+            display: block;
+            margin: 5px 0;
+            content: " ";
+        }
+        .btn {
+            margin-top: 20px;
+            width: 150px;
+            height: 50px;
+            border-radius: 50px;
+            border: 2px solid white;
+            color: white;
+            background: none;
+            font-size: 22px;
+            font-family: Montserrat, sans-serif;
+            transition: 0.12s linear;
+        }
+        .btn:hover {
+            padding-top: 8px;
+            background: white;
+            border: 0px;
+            color: indigo;
+        }
+        #results-contain {
+            display: inline-block;
+            width: 70%;
+            margin-top: 10px;
+            margin-right: 1%;
+            float: right;
+        }
+        #titles {
+            width: 100%;
+            height: 50px;
+            color: white;
+            font-family: Montserrat, sans-serif;
+            font-size: 22px;
+        }
+        #t1, #t2, #t3 {
+            display: inline-block;
+            width: 32%;
+            text-align: center;
+            padding-top: 10px;
+        }
+        #window1 {
+            background: lightblue;
+            width: 32%;
+            height: 550px;
+            overflow: scroll;
+            overflow-x: hidden; 
+            display: inline-block;
+        }
+        #window2 {
+            background: pink;
+            width: 32%;
+            margin-left: 1%;
+            height: 550px;
+            overflow: scroll;
+            overflow-x: hidden; 
+            display: inline-block;
+            vertical-align: top;
+        }
+        #window3 {
+            background: lightgrey;
+            width: 32%;
+            margin-left: 1%;
+            height: 550px;
+            overflow: scroll;
+            overflow-x: hidden; 
+            display: inline-block;
+            vertical-align: top;
+        }
     </style>
 </head>
 <body>
 
-	<div class="container">
-
-    <div class="page-header text-center">
-        <h1><span class="fa fa-anchor"></span> Profile Page</h1>
-        <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    <div id="personal-contain">
+        <h1><%= user.first_name %> <%= user.last_name %></h1>
+        <div id="personal-info">
+            <span class="grn"><%= user.good_subject%></span>&nbsp &nbsp &nbsp<span class="red"><%= user.bad_subject%></span>
+            <br><%= user.local.email %><br>
+        </div>
+        <a href="/logout" class="btn">Logout</a><br><br><br>
+        Study Buddies found:  <%= JSON.stringify(count) %><br><br>
+        Tutors found:  <%= JSON.stringify(tut_count) %><br><br>
+        Pupils found:  <%= JSON.stringify(pup_count) %>
     </div>
 
-    <div class="row">
 
-        <!-- LOCAL INFORMATION -->
-        <div class="col-sm-6">
-            <div class="well">
-			
-            <h1> Number of Study Buddy users : <%= JSON.stringify(count) %> </h1>
-            <p> Study Buddy Matching Users are :  <%= JSON.stringify(match) %> </p>
-            <h1> Number of tutors : <%= JSON.stringify(tut_count) %> </h1>
-            <p> TUTORS : <%= JSON.stringify(tutors) %> </p>
-            <h1> Number of pupils : <%= JSON.stringify(pup_count) %> </h1>
-            <p> PUPILS : <%= JSON.stringify(pupils) %> </p>
 
-                <h3><span class="fa fa-user"></span> Local</h3>
-                    <p>
-                        <strong>First Name: </strong>: <%= user.first_name %><br>
-                        <strong>Last Name: </strong>: <%= user.last_name %><br>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>Good subject</strong>: <%= user.good_subject%>
-                        <strong>Bad subject</strong>:     <%= user.bad_subject%>
-                   </p>
 
-            </div>
+    <div id="results-contain">
+
+        <div id="titles">
+            <div id="t1">Study Buddies</div><div id="t2">Tutors</div><div id="t3">Pupils</div>
+        </div>
+
+		<div id="window1">
+            <p> <%= JSON.stringify(match) %> </p>
+        </div>
+
+        <div id="window2">
+            <p> <%= JSON.stringify(tutors) %> </p>
+        </div>
+
+        <div id="window3">
+            <p> <%= JSON.stringify(pupils) %> </p>
         </div>
 
     </div>
