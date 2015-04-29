@@ -1,8 +1,8 @@
 <!doctype html>
 <html>
 <head>
-	<title>Thinker</title>
-	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+    <title>Thinker</title>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
     <style>
         body  {
@@ -135,41 +135,41 @@
         <!-- LOCAL INFORMATION -->
         <div class="col-sm-6">
             <div class="well">
-			
-            <h2> You have </h2> <%= JSON.stringify(count, null, 4) %><h2> Study-Buddy matches </h2>
-            <p> Study Buddy Matching Users are : <p>
-	           <% for (var key in match) {
-   		           var obj = match[key];
-	           %>
-	        <p> <%= obj.first_name %> <%= obj.last_name %> can help you with <%= obj.good_subject %> . <p>
-            <p> You can help <%= obj.first_name %> with <%=obj.bad_subject%><p>
-	           
+            <!-- STUDY BUDDY-->
+            <h2> You have  <%= JSON.stringify(count, null, 4) %> Study-Buddy matches! </h2>
+            <h3> Your perfect Study Buddies are : <h3>
+               <% for (var key in match) {
+                   var obj = match[key];
+               %>
+            <p> <%= obj.first_name %> <%= obj.last_name %> can help you with <strong><%= obj.good_subject %></strong>. <p>
+            <p> You can help <%= obj.first_name %> with <strong><%=obj.bad_subject%></strong> <p>
+            <p> Contact information: <%= obj.local.email %> <p>
+               
                 <% } %>
-        
-	        <h1> Number of tutors : <%= JSON.stringify(tut_count) %> </h1>
+            <p>-------------------------</p>
+            <!-- TUTORS-->
+            <h2> You have <%= JSON.stringify(tut_count, null, 4) %> Tutor matches! </h2>
+            <h3> Users who can help you are:<h3>
             
-            <p> TUTORS :  </p>
+                 <% for (var key in tutors) {
+                    var obj = tutors[key];
+                %>
+            <p> <%= obj.first_name %> <%= obj.last_name %>can help you with  <strong><%= obj.good_subject %></strong> <p>
+            <p> Contact information: <%= obj.local.email %> <p>
+            <% } %>
+            <p>-------------------------</p>
+            <!-- PUPILS-->
+            <h2> You have <%= JSON.stringify(pup_count, null, 4) %> Pupil matches! </h2>
+            <h3> You can help the following users<h3>
             
-				 <% for (var key in tutors) {
-        			var obj = tutors[key];
-    			%>
-            <p> <%= obj.first_name %> good at:  <%= obj.good_subject %> and bad
-at: <%=obj.bad_subject%><p>
-    	
-        	<% } %>
-			
-
-			<h1> Number of pupils : <%= JSON.stringify(pup_count) %> </h1>
-            
-            <p> PUPILS :  </p>
-			
-             <% for (var key in pupils) {
-        		var obj = pupils[key];
-   			 %>
-    		<p> <%= obj.first_name %> good at:  <%= obj.good_subject %> and bad
-at: <%=obj.bad_subject%><p>
-   			 
-             <% } %>
+                 <% for (var key in pupils) {
+                    var obj = pupils[key];
+                    console.log(obj);
+                %>
+            <p> You can help  <%= obj.first_name %> <%= obj.first_name %> with  <strong><%= obj.bad_subject %></strong> <p>
+             <p> Contact information: <%= obj.local.email %> <p>
+             
+            <% } %>
                 
 
                 <h3><span class="fa fa-user"></span> Local</h3>
