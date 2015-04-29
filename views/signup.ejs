@@ -23,9 +23,9 @@
         #contain {
             background: rgba(255,255,255,0.2);
             width: 800px;
-            height: 550px;
+            height: 570px;
             margin: 0 auto;
-            margin-top: 20px;
+            margin-top: 15px;
             padding-top: 15px;
             text-align: center;
             border: 2px solid white;
@@ -34,7 +34,7 @@
             padding-right: 5px;
         }
         input[type=text], input[type=password] {
-            width: 45%;
+            width: 80%;
             height: 50px;
             margin: 0 auto;
             margin-top: 20px;
@@ -47,7 +47,7 @@
         #course-contain {
         	width: 90%;
         	margin: 0 auto;
-        	margin-top: 20px;
+        	margin-top: 10px;
         }
         .courses {
         	display: inline-block;
@@ -94,6 +94,15 @@
             color: violet;
             text-decoration: underline;
         }
+        #col1 {
+        	width: 49%;
+        	display: inline-block;
+        }
+        #col2 {
+        	width: 49%;
+        	display: inline-block;
+        	vertical-align: top;
+        }
 
 	</style>
 </head>
@@ -108,38 +117,52 @@
 	<%} %>
 
 	<form action="/quiz" method="post">
-    <div class="form-group">
-        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+	<div id="col1">
+	    <div class="form-group">
+	        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+	    </div>
+	    <div class="form-group">
+	        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+	    </div>
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
-    </div>
-	<div class="form-group">
-		<input type="text" class="form-control" name="email" placeholder="Email">
-	</div>
-    <div class="form-group">
-		<input type="password" class="form-control" name="password" placeholder="Password">
+    <div id="col2">
+		<div class="form-group">
+			<input type="text" class="form-control" name="email" placeholder="Email">
+		</div>
+	    <div class="form-group">
+			<input type="password" class="form-control" name="password" placeholder="Password">
+		</div>
 	</div>
 
 	<div id="course-contain">
 		<div class="courses">
 		   <h4>Which of these topics do you understand best?</h4>
                 <select name="good_subject">
-                	<option value="math">Math</option>
-                	<option value="natscience">Natural Science</option>
-                	<option value="lit">Literature</option>
-                	<option value="prog">Programming</option>
-                	<option value="language">Foreign Language</option>
+                	<option value="Mathematics">Math</option>
+                	<option value="Natural Science">Natural Science</option>
+                	<option value="Literature">Literature</option>
+                	<option value="Programming">Programming</option>
+                	<option value="Foreign Language">Foreign Language</option>
+                    <option value="Advanced Calculus">Advanced Calculus</option>
+                    <option value="Physics Fundamentals">Physics Fundamentals</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="Embedded Systems">Advanced Calculus</option>
                 </select>
 		</div>
 		<div class="courses">
 			 <h4>Which is toughest for you to understand?</h4>
 				<select name="bad_subject">
-                	<option value="math">Math</option>
-                	<option value="natscience">Natural Science</option>
-                	<option value="lit">Literature</option>
-                	<option value="prog">Programming</option>
-                	<option value="language">Foreign Language</option>
+                	<option value="Mathematics">Math</option>
+                    <option value="Natural Science">Natural Science</option>
+                    <option value="Literature">Literature</option>
+                    <option value="Programming">Programming</option>
+                    <option value="Foreign Language">Foreign Language</option>
+                    <option value="Advanced Calculus">Advanced Calculus</option>
+                    <option value="Physics Fundamentals">Physics Fundamentals</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Machine Learning">Machine Learning</option>
+                    <option value="Embedded Systems">Advanced Calculus</option>
                 </select>
 		</div>
 	</div>
