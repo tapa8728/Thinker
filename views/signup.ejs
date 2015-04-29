@@ -23,9 +23,9 @@
         #contain {
             background: rgba(255,255,255,0.2);
             width: 800px;
-            height: 550px;
+            height: 570px;
             margin: 0 auto;
-            margin-top: 20px;
+            margin-top: 15px;
             padding-top: 15px;
             text-align: center;
             border: 2px solid white;
@@ -34,7 +34,7 @@
             padding-right: 5px;
         }
         input[type=text], input[type=password] {
-            width: 45%;
+            width: 80%;
             height: 50px;
             margin: 0 auto;
             margin-top: 20px;
@@ -47,7 +47,7 @@
         #course-contain {
         	width: 90%;
         	margin: 0 auto;
-        	margin-top: 20px;
+        	margin-top: 10px;
         }
         .courses {
         	display: inline-block;
@@ -94,6 +94,15 @@
             color: violet;
             text-decoration: underline;
         }
+        #col1 {
+        	width: 49%;
+        	display: inline-block;
+        }
+        #col2 {
+        	width: 49%;
+        	display: inline-block;
+        	vertical-align: top;
+        }
 
 	</style>
 </head>
@@ -108,17 +117,21 @@
 	<%} %>
 
 	<form action="/quiz" method="post">
-    <div class="form-group">
-        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+	<div id="col1">
+	    <div class="form-group">
+	        <input type="text" class="form-control" name="first_name" placeholder="First Name">
+	    </div>
+	    <div class="form-group">
+	        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
+	    </div>
     </div>
-    <div class="form-group">
-        <input type="text" class="form-control" name="last_name" placeholder="Last Name">
-    </div>
-	<div class="form-group">
-		<input type="text" class="form-control" name="email" placeholder="Email">
-	</div>
-    <div class="form-group">
-		<input type="password" class="form-control" name="password" placeholder="Password">
+    <div id="col2">
+		<div class="form-group">
+			<input type="text" class="form-control" name="email" placeholder="Email">
+		</div>
+	    <div class="form-group">
+			<input type="password" class="form-control" name="password" placeholder="Password">
+		</div>
 	</div>
 
 	<div id="course-contain">
