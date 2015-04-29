@@ -11,6 +11,8 @@ var userSchema = new Schema({
     },
   good_subject: String,
   bad_subject: String,
+  first_name: String,
+  last_name: String,
   quiz:{
     key1: String,
     key2: String,
