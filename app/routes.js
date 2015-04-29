@@ -25,6 +25,7 @@ module.exports = function(app, passport) {
 	var tutcount=0
 	var pupil=[]
 	var pupcount=0
+	var quizflag=0
 	app.get('/profile',isLoggedIn, function(req,res) {
 	
 		console.log("results outside" + results);
@@ -44,6 +45,8 @@ module.exports = function(app, passport) {
 		});
 
 	});
+
+
 	app.post('/profile', isLoggedIn, function(req, res) {
 	//var user_name=JSON.parse(req.body.user);
     var quiz=req.body.quiz;
@@ -70,23 +73,40 @@ module.exports = function(app, passport) {
       res.send(err);
 	})
 
+  	// Finds the tutors
     User.find({'good_subject': newUser.bad_subject},function(err,listusers )
     {
         for (var usr in listusers)
         {
         		tutor.push(listusers[usr]);
         		tutcount = tutcount+1;
-                //console.log(usr);
+                // Finds the best match..
                 if(listusers[usr].bad_subject == newUser.good_subject)
                     {
                         console.log("Match!!!");
                         console.log(listusers[usr]);
-                        results.push(listusers[usr]);
-                        rescount = rescount +1;	
+                        // quiz match logic here
+                        if(listusers[usr].key1 == newUser.key1)
+                        	quizflag=quizflag+1
+                        if(listusers[usr].key2 == newUser.key2)
+                        	quizflag=quizflag+1
+                        if(listusers[usr].key3 == newUser.key3)
+                        	quizflag=quizflag+1
+                        if(listusers[usr].key4 == newUser.key4)
+                        	quizflag=quizflag+1
+                        if(listusers[usr].key5 == newUser.key5)
+                        	quizflag=quizflag+1
+                        // if 3 or more answers match
+                        if(quizflag > 2)   
+                        {
+                       			results.push(listusers[usr]);
+                        		rescount = rescount +1;	
+                    	}	
                     }
         }
     });
 
+    // Finds the pupils
     User.find({'bad_subject': newUser.good_subject},function(err,listusers )
     {
         for (var usr in listusers)
