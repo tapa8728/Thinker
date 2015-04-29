@@ -21,7 +21,7 @@ module.exports = function(app, passport) {
 	var results = [];
 	var rescount=0		//stores the coount of the number of users
 	var tutor=[]
-	var listusers
+	var listusers={}
 	var tutcount=0
 	var pupil=[]
 	var pupcount=0
@@ -30,8 +30,9 @@ module.exports = function(app, passport) {
 	
 		console.log("results outside" + results);
 		
-		console.log("TOTAL COUNT ... ");
-		console.log(rescount);
+		//console.log("TOTAL COUNT ... ");
+		//console.log(rescount);
+
 		res.render('profile.ejs', {
 			user: newUser, match: results, count: rescount, tutors: tutor, tut_count: tutcount, pupils: pupil, pup_count:pupcount
 			});
@@ -150,11 +151,78 @@ module.exports = function(app, passport) {
 	
 
 
-	app.post('/login', passport.authenticate('local-login', {
+	/*app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/profile',
 		failureRedirect : '/login',
 		failureFlash : true
-		}));
+		}));*/
+	app.post('/login', passport.authenticate('local-login'), function(req,res){
+		var  results = [];
+		var rescount=0		//stores the coount of the number of users
+		var tutor=[]
+		var listusers={}
+		var tutcount=0
+		var pupil=[]
+		var pupcount=0
+		var quizflag=0
+		var usrlog;
+		var user={};
+		console.log("Im in login post" + JSON.stringify(req.body.email));
+		    User.find( {local: { password: req.body.password, email: req.body.email}},function(err,usrlog ){
+		    	console.log("usrlog===="+ usrlog[0].bad_subject);
+		    	User.find({'good_subject': usrlog[0].bad_subject},function(err,listusers){
+		    		//	console.log("listusers is "+ listusers)
+		    			for (var usr in listusers)
+        				{
+        					tutor.push(listusers[usr]);
+        					tutcount = tutcount+1;
+                			// Finds the best match..
+                			if(listusers[usr].bad_subject == newUser.good_subject)
+                    		{	
+                        		console.log("Match!!!");
+                        		console.log(listusers[usr]);
+                        		// quiz match logic here
+                        		if(listusers[usr].key1 == newUser.key1)
+                        			quizflag=quizflag+1
+                        		if(listusers[usr].key2 == newUser.key2)
+                        			quizflag=quizflag+1
+                        		if(listusers[usr].key3 == newUser.key3)
+                        			quizflag=quizflag+1
+                        		if(listusers[usr].key4 == newUser.key4)
+                        			quizflag=quizflag+1
+                        		if(listusers[usr].key5 == newUser.key5)
+                        			quizflag=quizflag+1
+                        		// if 3 or more answers match
+                        		if(quizflag > 2)   
+                        		{
+                       				results.push(listusers[usr]);
+                        			rescount = rescount +1;	
+                    			}	
+                    		}
+       					 }
+				})
+					//user ={usrlog[0]};
+				    console.log("before render user" + usrlog);
+				    // Finds the pupils
+   	 User.find({'bad_subject': usrlog[0].good_subject},function(err,listusers )
+    {
+        for (var usr in listusers)
+        {
+        		pupil.push(listusers[usr]);
+        		pupcount = pupcount+1;
+                
+        }
+    });
+
+   /* res.render('profile.ejs', {
+			user: usrlog, match: results, count: rescount, tutors: tutor, tut_count: tutcount, pupils: pupil, pup_count:pupcount
+			});*/
+
+
+		  
+
+	})
+})
 
     app.get('/data',function(req, res){
 		 User.find(function(err,users ){

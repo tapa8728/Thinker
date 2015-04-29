@@ -24,20 +24,48 @@
             <div class="well">
 			
             <h1> Number of Study Buddy users : <%= JSON.stringify(count, null, 4) %> </h1>
-            <p> Study Buddy Matching Users are :  <%= JSON.stringify(match, null, 4) %> </p>
-            <h1> Number of tutors : <%= JSON.stringify(tut_count) %> </h1>
-            <p> TUTORS : <%= JSON.stringify(tutors, null, 4) %> </p>
-            <h1> Number of pupils : <%= JSON.stringify(pup_count) %> </h1>
-            <p> PUPILS : <%= JSON.stringify(pupils, null, 4) %> </p>
+            <p> Study Buddy Matching Users are : <p>
+	           <% for (var key in match) {
+   		           var obj = match[key];
+	           %>
+	        <p> <%= obj.first_name %> good at:  <%= obj.good_subject %> and bad at: <%=obj.bad_subject%><p>
+	           
+                <% } %>
+        
+	        <h1> Number of tutors : <%= JSON.stringify(tut_count) %> </h1>
+            
+            <p> TUTORS :  </p>
+            
+				 <% for (var key in tutors) {
+        			var obj = tutors[key];
+    			%>
+            <p> <%= obj.first_name %> good at:  <%= obj.good_subject %> and bad
+at: <%=obj.bad_subject%><p>
+    	
+        	<% } %>
+			
+
+			<h1> Number of pupils : <%= JSON.stringify(pup_count) %> </h1>
+            
+            <p> PUPILS :  </p>
+			
+             <% for (var key in pupils) {
+        		var obj = pupils[key];
+   			 %>
+    		<p> <%= obj.first_name %> good at:  <%= obj.good_subject %> and bad
+at: <%=obj.bad_subject%><p>
+   			 
+             <% } %>
+                
 
                 <h3><span class="fa fa-user"></span> Local</h3>
                     <p>
-                        <strong>First Name: </strong>: <%= user.first_name %><br>
-                        <strong>Last Name: </strong>: <%= user.last_name %><br>
-                        <strong>id</strong>: <%= user._id %><br>
-                        <strong>email</strong>: <%= user.local.email %><br>
-                        <strong>Good subject</strong>: <%= user.good_subject%>
-                        <strong>Bad subject</strong>:     <%= user.bad_subject%>
+                        <strong>First Name: </strong>: <%= user[0].first_name %><br>
+                        <strong>Last Name: </strong>: <%= user[0].last_name %><br>
+                        <strong>id</strong>: <%= user[0]._id %><br>
+                        <strong>email</strong>: <%= user[0].local.email %><br>
+                        <strong>Good subject</strong>: <%= user[0].good_subject%>
+                        <strong>Bad subject</strong>:     <%= user[0].bad_subject%>
                    </p>
 
             </div>
