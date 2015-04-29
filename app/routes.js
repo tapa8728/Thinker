@@ -23,6 +23,8 @@ module.exports = function(app, passport) {
 	var tutor=[]
 	var listusers
 	var tutcount=0
+	var pupil=[]
+	var pupcount=0
 	app.get('/profile',isLoggedIn, function(req,res) {
 	
 		console.log("results outside" + results);
@@ -30,12 +32,18 @@ module.exports = function(app, passport) {
 		console.log("TOTAL COUNT ... ");
 		console.log(rescount);
 		res.render('profile.ejs', {
-			user: newUser, match: results, count: rescount, tutors: tutor, tut_count: tutcount
+			user: newUser, match: results, count: rescount, tutors: tutor, tut_count: tutcount, pupils: pupil, pup_count:pupcount
 			});
 	});
 		
 	//profile 
-	
+	app.get('/delete',function(req, res) {
+
+		User.remove(function(err,removed){
+			res.send(removed);
+		});
+
+	});
 	app.post('/profile', isLoggedIn, function(req, res) {
 	//var user_name=JSON.parse(req.body.user);
     var quiz=req.body.quiz;
@@ -62,7 +70,8 @@ module.exports = function(app, passport) {
       res.send(err);
 	})
 
-    User.find({'good_subject': newUser.bad_subject},function(err,listusers ){
+    User.find({'good_subject': newUser.bad_subject},function(err,listusers )
+    {
         for (var usr in listusers)
         {
         		tutor.push(listusers[usr]);
@@ -76,8 +85,16 @@ module.exports = function(app, passport) {
                         rescount = rescount +1;	
                     }
         }
+    });
 
-
+    User.find({'bad_subject': newUser.good_subject},function(err,listusers )
+    {
+        for (var usr in listusers)
+        {
+        		pupil.push(listusers[usr]);
+        		pupcount = pupcount+1;
+                
+        }
     });
 })
 	
