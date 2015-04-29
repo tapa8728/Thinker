@@ -151,12 +151,12 @@ module.exports = function(app, passport) {
 	
 
 
-	/*app.post('/login', passport.authenticate('local-login', {
+	app.post('/login', passport.authenticate('local-login', {
 		successRedirect : '/profile',
 		failureRedirect : '/login',
 		failureFlash : true
-		}));*/
-	app.post('/login', passport.authenticate('local-login'), function(req,res){
+		}));
+	/*app.post('/login', passport.authenticate('local-login'), function(req,res){
 		var  results = [];
 		var rescount=0		//stores the coount of the number of users
 		var tutor=[]
@@ -214,15 +214,15 @@ module.exports = function(app, passport) {
         }
     });
 
-   /* res.render('profile.ejs', {
+    res.render('profile.ejs', {
 			user: usrlog, match: results, count: rescount, tutors: tutor, tut_count: tutcount, pupils: pupil, pup_count:pupcount
-			});*/
+			});
 
 
 		  
 
-	})
-})
+	//})
+})*/
 
     app.get('/data',function(req, res){
 		 User.find(function(err,users ){
