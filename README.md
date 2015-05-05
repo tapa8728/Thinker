@@ -46,6 +46,9 @@ Since we are starting off at the same level, we all will be pair-programming and
 3. Ponder and construct the algorrithm that will generate a *comprehensive guidance report* 
 4. Extensive and rigorous *unit, white-box, black-box, user and system testing*. Deployment to *Heroku*.
 
+# Output Screens (for reference)
+![Alt text](https://github.com/tapa8728/Thinker/blob/master/images/image(1).png "Optional title")
+
 # Q/A (Round-1)
 1. WHat are the least amount of features is your product going to contain?
 2. What is your business pitch? What are going to offer?
