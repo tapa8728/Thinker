@@ -47,7 +47,14 @@ Since we are starting off at the same level, we all will be pair-programming and
 4. Extensive and rigorous *unit, white-box, black-box, user and system testing*. Deployment to *Heroku*.
 
 # Output Screens (for reference)
-![Alt text](https://github.com/tapa8728/Thinker/blob/master/images/image%20(1).png "Optional title")
+### Home Page:
+![Alt text](https://github.com/tapa8728/Thinker/blob/master/images/image.png "Home Page")
+### Sign Up Page:
+![Alt text](https://github.com/tapa8728/Thinker/blob/master/images/image%20(1).png "Sign Up")
+### Studdy-buddy Quiz
+![Alt text](https://github.com/tapa8728/Thinker/blob/master/images/image%20(2).png "Study-buddy quiz")
+### Recommendation List:
+![Alt text](https://github.com/tapa8728/Thinker/blob/master/images/image%20(3).png "Recommendation List")
 
 # Q/A (Round-1)
 1. WHat are the least amount of features is your product going to contain?
